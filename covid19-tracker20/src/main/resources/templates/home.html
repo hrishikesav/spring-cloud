@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Coronavirus tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+
+  <body>
+  	<div class="jumbotron">
+	  <h1 class="display-4">List of coronavirus cases around the world</h1>
+	  <p class="lead">Source - Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE). (C) Hrishi Kesav</p>
+	  <hr class="my-4">
+	  <p>Total cases reported as of <span th:text="${asOfDate}"></span> is <span th:text="${totalCases}"></span></p>
+	</div>
+    <table class="table table-striped table-dark table-bordered table-hover">
+		<thead class="thead-dark">
+			<tr>
+			<th>Country</th>
+			  <th>State</th>
+			  <th>Total cases</th>
+			  <th>Total cases in the last 24 hours</th>
+			</tr>
+		</thead>
+		<tr th:each="virusData : ${allDetails}">
+			  <td th:text="${virusData.country}"></td>
+			  <td th:text="${virusData.state}"></td>
+			  <td th:text="${virusData.totalCasesForTheDay}"></td>
+			  <td th:text="${virusData.casesInLast24Hours}"></td>
+			</tr>
+	</table>
+  
+  </body>
+
+</html>
